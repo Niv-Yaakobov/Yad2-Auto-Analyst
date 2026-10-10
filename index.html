@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>המלצות רכבים - מאגר חכם</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary: #eff6ff;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 1rem;
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            body { padding: 2rem; }
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        /* עיצוב פאנל הסינון והמיון */
+        .controls-panel {
+            background: var(--card-bg);
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .controls-panel {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .control-input {
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-main);
+            background-color: #f9fafb;
+            transition: border-color 0.2s;
+        }
+
+        .control-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: #ffffff;
+        }
+
+        .results-count {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .car-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--primary);
+            flex: 1;
+        }
+
+        .score {
+            background-color: var(--text-main);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-right: 1rem;
+            white-space: nowrap;
+        }
+
+        .score.high { background-color: var(--success); }
+        .score.medium { background-color: #f59e0b; color: var(--text-main); }
+        .score.low { background-color: var(--danger); }
+
+        .metrics {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .metric {
+            flex: 1;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        .list-section {
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .list-title {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pros-title { color: var(--success); }
+        .cons-title { color: var(--danger); }
+
+        ul { margin: 0; padding: 0; list-style: none; }
+
+        li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .icon-pro { color: var(--success); flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
+        .icon-con { color: var(--danger); flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
+
+        .verdict {
+            background-color: #e0e7ff;
+            border-right: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 4px 8px 8px 4px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .toggle-btn {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-btn:hover { background-color: var(--secondary); }
+
+        .accordion-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-out;
+            margin-bottom: 1rem;
+        }
+
+        .accordion-wrapper.open { grid-template-rows: 1fr; }
+        .accordion-inner { overflow: hidden; }
+
+        .info-card {
+            background-color: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .info-item span.label { color: var(--text-muted); display: block; font-size: 0.8rem; }
+        .info-item span.value { font-weight: 700; color: var(--text-main); }
+
+        .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: background-color 0.2s;
+            box-sizing: border-box;
+            border: none;
+            margin-top: auto;
+        }
+
+        .btn:hover { background-color: var(--primary-hover); }
+
+        .arrow { transition: transform 0.3s ease; width: 20px; height: 20px; }
+        .toggle-btn.open .arrow { transform: rotate(180deg); }
+
+        #loading { text-align: center; font-size: 1.25rem; font-weight: 500; color: var(--primary); margin-top: 3rem; }
+        #error-msg { text-align: center; color: var(--danger); margin-top: 3rem; font-weight: 700; display: none; }
+        
+        .no-results { text-align: center; grid-column: 1 / -1; font-size: 1.2rem; color: var(--text-muted); padding: 3rem; }
+    </style>
+</head>
+<body>
+
+    <h1>
+        <i data-lucide="car-front" style="width: 36px; height: 36px;"></i> 
+        המלצות רכבים יד שנייה
+    </h1>
+
+    <!-- פאנל סינון ומיון -->
+    <div class="controls-panel" id="controls" style="display: none;">
+        <div class="control-group">
+            <label class="control-label" for="sort-select">מיין לפי</label>
+            <select id="sort-select" class="control-input">
+                <option value="score_desc">ציון (הגבוה ביותר תחילה)</option>
+                <option value="price_asc">מחיר (מהזול ליקר)</option>
+                <option value="price_desc">מחיר (מהיקר לזול)</option>
+                <option value="km_asc">קילומטראז' (מהנמוך לגבוה)</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="max-price">מחיר מקסימלי (₪)</label>
+            <input type="number" id="max-price" class="control-input" placeholder="ללא הגבלה">
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="max-km">קילומטראז' מקסימלי</label>
+            <input type="number" id="max-km" class="control-input" placeholder="ללא הגבלה">
+        </div>
+    </div>
+    
+    <div id="results-info" class="results-count"></div>
+
+    <div id="loading">טוען נתונים...</div>
+    <div id="error-msg">שגיאה בטעינת הקובץ. ודא שהקובץ gemini_results_history.json קיים באותה תיקייה ושהפעלת שרת מקומי.</div>
+
+    <div id="runs-container" class="container"></div>
+
+    <script>
+        // משתנה גלובלי לשמירת כל הרכבים
+        let allCars = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            loadData();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('sort-select').addEventListener('change', applyFiltersAndRender);
+            document.getElementById('max-price').addEventListener('input', applyFiltersAndRender);
+            document.getElementById('max-km').addEventListener('input', applyFiltersAndRender);
+        }
+
+        function toggleInfo(button) {
+            button.classList.toggle('open');
+            const content = button.nextElementSibling;
+            content.classList.toggle('open');
+        }
+
+        function formatDateStr(dateStr) {
+            if (!dateStr) return 'לא צוין';
+            try {
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('he-IL');
+            } catch (e) {
+                return dateStr;
+            }
+        }
+
+        async function loadData() {
+            try {
+                const response = await fetch('gemini_results_history.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const historyData = await response.json();
+                
+                // שיטוח כל הריצות למערך אחד גדול של רכבים
+                historyData.forEach(run => {
+                    if (run.top_recommendations) {
+                        run.top_recommendations.forEach(car => {
+                            allCars.push(car);
+                        });
+                    }
+                });
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('controls').style.display = 'grid'; // הצגת הפאנל
+                
+                applyFiltersAndRender();
+                
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        function applyFiltersAndRender() {
+            const sortValue = document.getElementById('sort-select').value;
+            const maxPriceStr = document.getElementById('max-price').value;
+            const maxKmStr = document.getElementById('max-km').value;
+
+            // 1. סינון
+            let filteredCars = allCars.filter(car => {
+                const maxPrice = maxPriceStr ? parseInt(maxPriceStr, 10) : Infinity;
+                const maxKm = maxKmStr ? parseInt(maxKmStr, 10) : Infinity;
+                
+                return (car.price <= maxPrice) && (car.km <= maxKm);
+            });
+
+            // 2. מיון
+            filteredCars.sort((a, b) => {
+                switch(sortValue) {
+                    case 'score_desc':
+                        return b.score_out_of_10 - a.score_out_of_10;
+                    case 'price_asc':
+                        return a.price - b.price;
+                    case 'price_desc':
+                        return b.price - a.price;
+                    case 'km_asc':
+                        return a.km - b.km;
+                    default:
+                        return 0;
+                }
+            });
+
+            // 3. עדכון כמות תוצאות
+            const infoDiv = document.getElementById('results-info');
+            infoDiv.textContent = `מציג ${filteredCars.length} מתוך ${allCars.length} רכבים`;
+
+            // 4. רינדור למסך
+            renderCars(filteredCars);
+        }
+
+        function renderCars(cars) {
+            const container = document.getElementById('runs-container');
+            container.innerHTML = ''; // ניקוי הקיים
+
+            if (cars.length === 0) {
+                container.innerHTML = '<div class="no-results">לא נמצאו רכבים התואמים לסינון שהגדרת.</div>';
+                return;
+            }
+
+            cars.forEach(car => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                let scoreClass = 'medium';
+                if (car.score_out_of_10 >= 8.5) scoreClass = 'high';
+                else if (car.score_out_of_10 <= 6.5) scoreClass = 'low';
+
+                const prosHtml = car.pros.map(p => 
+                    `<li><i data-lucide="check-circle-2" class="icon-pro"></i> <span>${p}</span></li>`
+                ).join('');
+                
+                const consHtml = car.cons_and_warnings.map(c => 
+                    `<li><i data-lucide="alert-triangle" class="icon-con"></i> <span>${c}</span></li>`
+                ).join('');
+
+                const info = car.additional_info || {};
+
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h2 class="car-title">${car.car_name}</h2>
+                        <div class="score ${scoreClass}">${car.score_out_of_10} / 10</div>
+                    </div>
+                    <div class="metrics">
+                        <div class="metric">
+                            <div class="metric-value">₪${car.price.toLocaleString()}</div>
+                            <div class="metric-label">מחיר</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">${car.km.toLocaleString()}</div>
+                            <div class="metric-label">קילומטראז'</div>
+                        </div>
+                    </div>
+                    <div class="list-section">
+                        <div class="list-title pros-title">יתרונות:</div>
+                        <ul class="pros-list">${prosHtml}</ul>
+                    </div>
+                    <div class="list-section">
+                        <div class="list-title cons-title">חסרונות ואזהרות:</div>
+                        <ul class="cons-list">${consHtml}</ul>
+                    </div>
+                    <div class="verdict">
+                        <strong>שורה תחתונה:</strong> ${car.verdict_reason}
+                    </div>
+                    
+                    <button class="toggle-btn" onclick="toggleInfo(this)">
+                        מידע נוסף <i data-lucide="chevron-down" class="arrow"></i>
+                    </button>
+                    <div class="accordion-wrapper">
+                        <div class="accordion-inner">
+                            <div class="info-card">
+                                <div class="info-grid">
+                                    <div class="info-item"><span class="label">יד:</span> <span class="value">${info.hand || 'לא צוין'}</span></div>
+                                    <div class="info-item"><span class="label">חודש עלייה לכביש:</span> <span class="value">${info.month || 'לא צוין'}</span></div>
+                                    <div class="info-item"><span class="label">טסט עד:</span> <span class="value">${formatDateStr(info.testUntil)}</span></div>
+                                    <div class="info-item"><span class="label">מחיר מקורי במודעה:</span> <span class="value">${info.originalPrice ? '₪' + info.originalPrice.toLocaleString() : 'לא צוין'}</span></div>
+                                    <div class="info-item"><span class="label">סוג מוכר:</span> <span class="value">${info.sellerType === 'private' ? 'פרטי' : (info.sellerType || 'לא צוין')}</span></div>
+                                    <div class="info-item"><span class="label">בעלות קודמת:</span> <span class="value">${info.previousOwnership || 'לא צוין'}</span></div>
+                                    <div class="info-item" style="grid-column: 1 / -1;"><span class="label">מזהה מודעה (Token):</span> <span class="value">${info.token || 'לא צוין'}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="${car.link}" target="_blank" class="btn">לצפייה במודעה ביד2</a>
+                `;
+                
+                container.appendChild(card);
+            });
+
+            // רינדור מחדש של האייקונים בכרטיסיות החדשות
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
