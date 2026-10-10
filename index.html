@@ -126,6 +126,53 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
+        /* --- עיצוב התראת ירידת מחיר (Badges) --- */
+        @keyframes pulse-alert {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .price-alert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+
+        .price-alert-badge.new-alert {
+            background-color: #fee2e2;
+            color: var(--danger);
+            border: 1px solid #fca5a5;
+            animation: pulse-alert 2s infinite;
+        }
+
+        .price-alert-badge.old-alert {
+            background-color: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+        }
+
+        /* מראה נתונים ישנים לעומת חדשים */
+        .old-val {
+            text-decoration: line-through;
+            opacity: 0.5;
+            font-size: 0.85em;
+            margin-left: 0.25rem;
+            font-weight: 400;
+        }
+        .metric-value .new-val {
+            color: var(--success);
+        }
+        .score .old-val {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
         .card-header {
             display: flex;
             justify-content: space-between;
@@ -211,6 +258,31 @@
 
         .icon-pro { color: var(--success); flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
         .icon-con { color: var(--danger); flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px; }
+
+        /* תצוגת ניתוח Gemini */
+        .ai-analysis {
+            background-color: #fffbeb; /* צהוב/כתום עדין */
+            border: 1px solid #fde68a;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ai-analysis-title {
+            color: #d97706;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .ai-analysis-text {
+            color: #92400e;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
 
         .verdict {
             background-color: #e0e7ff;
@@ -333,7 +405,6 @@
     <div id="runs-container" class="container"></div>
 
     <script>
-        // משתנה גלובלי לשמירת כל הרכבים
         let allCars = [];
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -371,7 +442,6 @@
                 
                 const historyData = await response.json();
                 
-                // שיטוח כל הריצות למערך אחד גדול של רכבים
                 historyData.forEach(run => {
                     if (run.top_recommendations) {
                         run.top_recommendations.forEach(car => {
@@ -381,7 +451,7 @@
                 });
                 
                 document.getElementById('loading').style.display = 'none';
-                document.getElementById('controls').style.display = 'grid'; // הצגת הפאנל
+                document.getElementById('controls').style.display = 'grid'; 
                 
                 applyFiltersAndRender();
                 
@@ -397,7 +467,6 @@
             const maxPriceStr = document.getElementById('max-price').value;
             const maxKmStr = document.getElementById('max-km').value;
 
-            // 1. סינון
             let filteredCars = allCars.filter(car => {
                 const maxPrice = maxPriceStr ? parseInt(maxPriceStr, 10) : Infinity;
                 const maxKm = maxKmStr ? parseInt(maxKmStr, 10) : Infinity;
@@ -405,33 +474,25 @@
                 return (car.price <= maxPrice) && (car.km <= maxKm);
             });
 
-            // 2. מיון
             filteredCars.sort((a, b) => {
                 switch(sortValue) {
-                    case 'score_desc':
-                        return b.score_out_of_10 - a.score_out_of_10;
-                    case 'price_asc':
-                        return a.price - b.price;
-                    case 'price_desc':
-                        return b.price - a.price;
-                    case 'km_asc':
-                        return a.km - b.km;
-                    default:
-                        return 0;
+                    case 'score_desc': return b.score_out_of_10 - a.score_out_of_10;
+                    case 'price_asc': return a.price - b.price;
+                    case 'price_desc': return b.price - a.price;
+                    case 'km_asc': return a.km - b.km;
+                    default: return 0;
                 }
             });
 
-            // 3. עדכון כמות תוצאות
             const infoDiv = document.getElementById('results-info');
             infoDiv.textContent = `מציג ${filteredCars.length} מתוך ${allCars.length} רכבים`;
 
-            // 4. רינדור למסך
             renderCars(filteredCars);
         }
 
         function renderCars(cars) {
             const container = document.getElementById('runs-container');
-            container.innerHTML = ''; // ניקוי הקיים
+            container.innerHTML = ''; 
 
             if (cars.length === 0) {
                 container.innerHTML = '<div class="no-results">לא נמצאו רכבים התואמים לסינון שהגדרת.</div>';
@@ -455,15 +516,41 @@
                 ).join('');
 
                 const info = car.additional_info || {};
+                const alert = car.price_drop_alert;
+
+                // יצירת תוכן משתנה במידה ויש התראת ירידת מחיר
+                let badgeHtml = '';
+                let priceHtml = `₪${car.price.toLocaleString()}`;
+                let scoreHtml = `${car.score_out_of_10} / 10`;
+                let aiAnalysisHtml = '';
+
+                if (alert) {
+                    if (alert.is_new) {
+                        badgeHtml = `<div class="price-alert-badge new-alert"><i data-lucide="bell-ring" style="width: 16px; height: 16px;"></i> 🚨 ירידת מחיר חדשה!</div>`;
+                    } else {
+                        badgeHtml = `<div class="price-alert-badge old-alert"><i data-lucide="history" style="width: 16px; height: 16px;"></i> המחיר ירד בעבר</div>`;
+                    }
+
+                    priceHtml = `<span class="old-val">₪${alert.old_price.toLocaleString()}</span> <span class="new-val">₪${car.price.toLocaleString()}</span>`;
+                    scoreHtml = `<span class="old-val">${alert.old_score}</span> <span class="new-val">${car.score_out_of_10}</span> / 10`;
+                    
+                    aiAnalysisHtml = `
+                        <div class="ai-analysis">
+                            <div class="ai-analysis-title"><i data-lucide="bot" style="width: 18px; height: 18px;"></i> ניתוח Gemini לעדכון:</div>
+                            <div class="ai-analysis-text">${alert.analysis}</div>
+                        </div>
+                    `;
+                }
 
                 card.innerHTML = `
+                    ${badgeHtml}
                     <div class="card-header">
                         <h2 class="car-title">${car.car_name}</h2>
-                        <div class="score ${scoreClass}">${car.score_out_of_10} / 10</div>
+                        <div class="score ${scoreClass}">${scoreHtml}</div>
                     </div>
                     <div class="metrics">
                         <div class="metric">
-                            <div class="metric-value">₪${car.price.toLocaleString()}</div>
+                            <div class="metric-value">${priceHtml}</div>
                             <div class="metric-label">מחיר</div>
                         </div>
                         <div class="metric">
@@ -479,6 +566,9 @@
                         <div class="list-title cons-title">חסרונות ואזהרות:</div>
                         <ul class="cons-list">${consHtml}</ul>
                     </div>
+                    
+                    ${aiAnalysisHtml}
+                    
                     <div class="verdict">
                         <strong>שורה תחתונה:</strong> ${car.verdict_reason}
                     </div>
@@ -493,7 +583,7 @@
                                     <div class="info-item"><span class="label">יד:</span> <span class="value">${info.hand || 'לא צוין'}</span></div>
                                     <div class="info-item"><span class="label">חודש עלייה לכביש:</span> <span class="value">${info.month || 'לא צוין'}</span></div>
                                     <div class="info-item"><span class="label">טסט עד:</span> <span class="value">${formatDateStr(info.testUntil)}</span></div>
-                                    <div class="info-item"><span class="label">מחיר מקורי במודעה:</span> <span class="value">${info.originalPrice ? '₪' + info.originalPrice.toLocaleString() : 'לא צוין'}</span></div>
+                                    <div class="info-item"><span class="label">מחיר מקורי בפרסום:</span> <span class="value">${info.originalPrice ? '₪' + info.originalPrice.toLocaleString() : 'לא צוין'}</span></div>
                                     <div class="info-item"><span class="label">סוג מוכר:</span> <span class="value">${info.sellerType === 'private' ? 'פרטי' : (info.sellerType || 'לא צוין')}</span></div>
                                     <div class="info-item"><span class="label">בעלות קודמת:</span> <span class="value">${info.previousOwnership || 'לא צוין'}</span></div>
                                     <div class="info-item" style="grid-column: 1 / -1;"><span class="label">מזהה מודעה (Token):</span> <span class="value">${info.token || 'לא צוין'}</span></div>
