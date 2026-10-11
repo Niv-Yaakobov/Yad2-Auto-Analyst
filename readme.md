@@ -31,8 +31,8 @@ The project consists of three core components designed to run on separate schedu
 
 ### 2. Installation
 ```bash
-git clone https://github.com/your-username/yad2-auto-analyst.git
-cd yad2-auto-analyst
+git clone https://github.com/Niv-Yaakobov/Yad2-Auto-Analyst
+cd Yad2-Auto-Analyst
 pip install -r requirements.txt
 ```
 
