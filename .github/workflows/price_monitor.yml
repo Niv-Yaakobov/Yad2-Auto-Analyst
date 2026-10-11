@@ -3,7 +3,7 @@ name: Price Monitor
 on:
   schedule:
     # שעון השרת הוא UTC. שעה 12:00 ב-UTC שווה ל-14:00 שעון ישראל (חורף)
-    - cron: '0 12 * * *'
+    - cron: '23 11 * * *' # ירוץ ב-14:23 בצהריים (שעון קיץ)
   workflow_dispatch: # מאפשר הרצה ידנית מהממשק
 
 permissions:
@@ -41,4 +41,4 @@ jobs:
           git config --local user.name "GitHub Action"
           # הסקריפט מעדכן את קובץ התוצאות (מחירים שירדו) ומנקה מודעות שהוסרו מהזיכרון
           git add gemini_results_history.json processed_tokens.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update prices and clean removed ads [skip ci]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update prices and clean removed ads" && git push)
