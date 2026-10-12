@@ -376,5 +376,178 @@
       }
     ],
     "run_timestamp": "2026-10-09 16:44:12"
+  },
+  {
+    "top_recommendations": [
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/7ijydpcj",
+        "car_name": "2015 מיצובישי ספייס סטאר Instyle אוט׳ 1.2 (80 כ״ס) [2015-2020]",
+        "price": 22000,
+        "km": 146000,
+        "score_out_of_10": 7.5,
+        "pros": [
+          "נסועה שנתית סבירה למדי (כ-17,000 ק\"מ בשנה)",
+          "מנוע אטמוספרי פשוט וגיר רציף אמינים וחסכוניים מאוד בדלק",
+          "עלויות אחזקה וחלפים זולות וזמינות"
+        ],
+        "cons_and_warnings": [
+          "נוחות נסיעה ובידוד רעשים בסיסיים בלבד",
+          "יש לוודא היסטוריית החלפת נוזל תמסורת רציפה במועד"
+        ],
+        "verdict_reason": "רכב עירוני חסכוני, פשוט לאחזקה ומבוקש, המתאים מאוד כרכב ראשון עם נתוני נסועה סבירים לגילו.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2026-11-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 11,
+          "description": null,
+          "originalPrice": 22000,
+          "token": "7ijydpcj"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/2cdqiba6",
+        "car_name": "2014 יונדאי i20 Insight אוט׳ 1.4 (100 כ״ס)",
+        "price": 21400,
+        "km": 195300,
+        "score_out_of_10": 7.1,
+        "pros": [
+          "מנוע 1.4 אטמוספרי וגיר פלנטרי אמינים ועמידים לאורך זמן",
+          "בעלות פרטית (יד 2)",
+          "טסט ארוך בתוקף"
+        ],
+        "cons_and_warnings": [
+          "קילומטראז' סך-הכל נושק ל-200,000 ק\"מ",
+          "צריכת דלק ממוצעת בלבד בתוואי עירוני"
+        ],
+        "verdict_reason": "מכלולים מכאניים אמינים ופשוטים המעניקים שקט נפשי כרכב ראשון, למרות נסועה מצטברת מעט גבוהה.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-08-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 8,
+          "description": null,
+          "originalPrice": 21400,
+          "token": "2cdqiba6"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/sw6y4vmj",
+        "car_name": "2010 סוזוקי סוויפט GLX אוט׳ 1.5 (101 כ״ס)",
+        "price": 12000,
+        "km": 188200,
+        "score_out_of_10": 7.2,
+        "pros": [
+          "מחיר רכישה נמוך ונגיש מאוד",
+          "נסועה שנתית נמוכה מהממוצע (כ-13,400 ק\"מ בשנה)",
+          "שילוב מנוע 1.5 וגיר פלנטרי אמינים ובעלי אורך חיים גבוה"
+        ],
+        "cons_and_warnings": [
+          "יד 5 גבוהה",
+          "תא מטען קטן יחסית"
+        ],
+        "verdict_reason": "מכונית סופר-מיני אמינה במחיר נמוך, נסועה שנתית נמוכה ומכלולים עמידים המתאימים בדיוק לנהג מתחיל.",
+        "additional_info": {
+          "hand": 5,
+          "testUntil": "2027-05-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 5,
+          "description": null,
+          "originalPrice": 12500,
+          "token": "sw6y4vmj"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/4bwux0t1",
+        "car_name": "2015 יונדאי i20 Inspire אוט׳ 1.4 (100 כ״ס)",
+        "price": 29900,
+        "km": 135000,
+        "score_out_of_10": 7.6,
+        "pros": [
+          "נסועה שנתית נמוכה מהממוצע (כ-15,000 ק\"מ בשנה)",
+          "שילוב מנוע וגיר אמינים ופשוטים לאחזקה",
+          "טסט בתוקף לשנתיים (עד 2027)"
+        ],
+        "cons_and_warnings": [
+          "מוכר מסחרי – דורש בדיקה קפדנית של היסטוריית טיפולים וגילוי נאות",
+          "מחיר גבוה יחסית לשאר האפשרויות"
+        ],
+        "verdict_reason": "דגם חדיש יחסית עם נסועה טובה ומכלולים פשוטים ועמידים, המהווה פתרון מצוין למי שמחפש שקט נפשי.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-02-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "יוסף כהן‏ טופ מוטורס",
+          "month": 2,
+          "description": null,
+          "originalPrice": 29900,
+          "token": "4bwux0t1"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/k7kthjdb",
+        "car_name": "2011 יונדאי i20 Inspire אוט׳ 5 דל 1.4 (100 כ״ס) [2009-2013]",
+        "price": 22000,
+        "km": 102000,
+        "score_out_of_10": 7.8,
+        "pros": [
+          "קילומטראז' נמוך מאוד ביחס לשנתון (כ-7,800 ק\"מ בשנה בלבד)",
+          "מכלולים פשוטים: מנוע אטמוספרי וגיר אוטומטי פלנטרי אמין",
+          "טסט ארוך בתוקף"
+        ],
+        "cons_and_warnings": [
+          "נמכר דרך סוחר/מגרש – מחייב אימות קילומטראז' בטופסי רישוי ובדיקת טיפולים",
+          "אבזור ועיצוב בסיסיים"
+        ],
+        "verdict_reason": "נתוני נסועה חריגים לטובה בשילוב מכלולים עמידים ביותר הופכים רכב זה לאופציה כדאית מאוד כרכב ראשון.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-08-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "שרון קאר",
+          "month": 8,
+          "description": null,
+          "originalPrice": 22000,
+          "token": "k7kthjdb"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/6bliwz1r",
+        "car_name": "2015 מאזדה 2 Dynamic אוט׳ 1.5 (103 כ״ס) [2014-2015]",
+        "price": 16000,
+        "km": 161000,
+        "score_out_of_10": 7.4,
+        "pros": [
+          "תמורה מצוינת למחיר עבור שנתון 2015",
+          "מנוע 1.5 אטמוספרי זריז ואמין עם תיבה פלנטרית עמידה",
+          "טסט בתוקף עד 2027"
+        ],
+        "cons_and_warnings": [
+          "מכירה מסוחר – מצריך בדיקת שלדה והיסטוריית תאונות/טיפולים",
+          "כיול מתלים נוקשה מעט"
+        ],
+        "verdict_reason": "סופר-מיני דינמית ואמינה במחיר נגיש, נסועה סבירה לגילה ומכלולים מכאניים מוכחים.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-01-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "פריים מוטורס",
+          "month": 1,
+          "description": null,
+          "originalPrice": 16000,
+          "token": "6bliwz1r"
+        }
+      }
+    ],
+    "run_timestamp": "2026-10-12 16:01:44"
   }
 ]
