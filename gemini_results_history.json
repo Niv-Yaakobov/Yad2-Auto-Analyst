@@ -549,5 +549,234 @@
       }
     ],
     "run_timestamp": "2026-10-12 16:01:44"
+  },
+  {
+    "top_recommendations": [
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/4z29ozoy",
+        "car_name": "2012 יונדאי i20 Inspire אוט׳ 5 דל 1.4 (100 כ״ס)",
+        "price": 20000,
+        "km": 147000,
+        "score_out_of_10": 8.2,
+        "pros": [
+          "נסועה נמוכה מאוד ביחס לשנתון (כ-11,500 ק\"מ בשנה)",
+          "מנוע 1.4 אטמוספרי ותיבת הילוכים פלנטרית אמינים ועמידים לאורך זמן",
+          "בעלות פרטית ויד שנייה בלבד"
+        ],
+        "cons_and_warnings": [
+          "תיבת הילוכים עם 4 הילוכים בלבד המגדילה מעט את צריכת הדלק בנסיעות בינעירוניות",
+          "יש לבדוק תקינות מערכת החשמל והפלסטיקה בתא הנוסעים"
+        ],
+        "verdict_reason": "שילוב מצוין של נסועה נמוכה, בעלות פרטית ומכלולים מכניים פשוטים ואמינים המתאימים בדיוק להגדרת רכב ראשון.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-05-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": null,
+          "description": null,
+          "originalPrice": 20000,
+          "token": "4z29ozoy"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/9rrq0xxi",
+        "car_name": "2011 מאזדה 2 Dynamic אוט׳ האצ'בק 5 דל 1.5 (103 כ״ס)",
+        "price": 17000,
+        "km": 171000,
+        "score_out_of_10": 8.0,
+        "pros": [
+          "מנוע 1.5 עוצמתי ואמין בשילוב גיר פלנטרי פשוט ועמיד",
+          "רמת גימור Dynamic כוללת אבזור עדיף וחישוקי קל Hot-hatch",
+          "יד 2 ונסועה ממוצעת נמוכה מהממוצע הארצי"
+        ],
+        "cons_and_warnings": [
+          "נוחות נסיעה נוקשה יחסית בעיר",
+          "בידוד רעשים בסיסי במהירויות כביש מהיר"
+        ],
+        "verdict_reason": "מאזדה 2 ברמת גימור גבוהה ועם נתונים טובים. מציעה אמינות מכנית גבוהה מאוד, עלויות אחזקה סבירות והתנהגות כביש טובה.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-03-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 3,
+          "description": null,
+          "originalPrice": 17000,
+          "token": "9rrq0xxi"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/osen0jpe",
+        "car_name": "2010 יונדאי i20 Premium אוט׳ 1.4 (100 כ״ס)",
+        "price": 19000,
+        "km": 155000,
+        "score_out_of_10": 7.8,
+        "pros": [
+          "קילומטראז' נמוך מאוד לשנת 2010",
+          "רמת גימור Premium גבוהה",
+          "מנוע ותיבת הילוכים אמינים ופשוטים לתחזוקה"
+        ],
+        "cons_and_warnings": [
+          "שנתון ישן יחסית במחיר קרוב לדגמים חדישים יותר",
+          "מומלץ לבדוק בלאי של חלקי גומי ומתלים עקב גיל הרכב"
+        ],
+        "verdict_reason": "רכב שמור עם נסועה נמוכה מאוד ויד נמוכה, המספק מענה אמין ופשוט לנהג מתחיל ברמת גימור מאובזרת.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-01-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 1,
+          "description": null,
+          "originalPrice": 19000,
+          "token": "osen0jpe"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/aqvrt5hd",
+        "car_name": "2014 יונדאי i20 Insight אוט׳ 1.4 (100 כ״ס)",
+        "price": 18000,
+        "km": 175000,
+        "score_out_of_10": 7.6,
+        "pros": [
+          "שנתון מתקדם יותר (2014) במחיר נגיש",
+          "נסועה סבירה לחלוטין לגיל הרכב",
+          "מכלולים מכניים פשוטים, זולים לתחזוקה ובעלי זמינות חלפים גבוהה"
+        ],
+        "cons_and_warnings": [
+          "רמת גימור Insight בסיסית",
+          "יד 3"
+        ],
+        "verdict_reason": "יתרון שנתון מתקדם יחסית במחיר נוח, יחד עם המכלולים האמינים המוכרים של ה-i20.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-02-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 2,
+          "description": null,
+          "originalPrice": 18000,
+          "token": "aqvrt5hd"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/adbvngjd",
+        "car_name": "2011 יונדאי i20 Inspire אוט׳ 5 דל 1.4 (100 כ״ס)",
+        "price": 13900,
+        "km": 162000,
+        "score_out_of_10": 7.4,
+        "pros": [
+          "מחיר אטרקטיבי נמוך במיוחד",
+          "קילומטראז' נמוך מאוד ויד 2 בלבד",
+          "עלויות חלפים וטיפולים זולות"
+        ],
+        "cons_and_warnings": [
+          "מכירה דרך סוחר/סוכנות – מחייב בדיקת מקוריות הבעלויות הקודמות והיסטוריית טיפולים",
+          "יש לוודא שאין פגיעות שלדה או ליקויים מוסתרים"
+        ],
+        "verdict_reason": "תמורה מעולה למחיר בזכות נסועה נמוכה ויד נמוכה, מותנה בבדיקה קפדנית של טופס גילוי נאות והיסטוריית הרכב עקב מכירה מסוחר.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-02-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "אליאב מרדכי רכבים",
+          "month": 2,
+          "description": null,
+          "originalPrice": 13900,
+          "token": "adbvngjd"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/6dajboky",
+        "car_name": "2013 יונדאי i20 Insight אוט׳ 1.4 (100 כ״ס)",
+        "price": 17000,
+        "km": 180000,
+        "score_out_of_10": 7.3,
+        "pros": [
+          "שנתון 2013 במחיר הגיוני",
+          "יד 2 בלבד",
+          "מנוע אטמוספרי וגיר אוטומטי פלנטרי אמינים"
+        ],
+        "cons_and_warnings": [
+          "מכירה דרך מגרש/סוחר מסחרי",
+          "רמת גימור בסיסית"
+        ],
+        "verdict_reason": "נתונים מאוזנים של שנתון, נסועה ויד במחיר נגיש, מתאים לרכב ראשון לאחר וידוא היסטוריית טיפולים במוסך.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-03-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "ריוני קאר",
+          "month": 3,
+          "description": null,
+          "originalPrice": 17000,
+          "token": "6dajboky"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/zhi31qip",
+        "car_name": "2012 סוזוקי סוויפט GLX-i אוט׳ 1.2 (94 כ״ס)",
+        "price": 15500,
+        "km": 191000,
+        "score_out_of_10": 7.2,
+        "pros": [
+          "אמינות מכנית מוכחת וצריכת דלק חסכונית יחסית לתיבה פלנטרית",
+          "מחיר נמוך ונגיש",
+          "מכירה פרטית"
+        ],
+        "cons_and_warnings": [
+          "יד 4 גבוהה יחסית",
+          "תא מטען קטן בנפחו"
+        ],
+        "verdict_reason": "דגם אמין ופופולרי מאוד עם אחזקה זולה ופשוטה. על אף היד הגבוהה, נתוני המחיר והנסועה הופכים אותו לאופציה טובה.",
+        "additional_info": {
+          "hand": 4,
+          "testUntil": "2027-05-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 5,
+          "description": null,
+          "originalPrice": 15500,
+          "token": "zhi31qip"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/p5h068zw",
+        "car_name": "2010 סוזוקי סוויפט GLX אוט׳ 1.5 (101 כ״ס)",
+        "price": 16800,
+        "km": 143500,
+        "score_out_of_10": 7.1,
+        "pros": [
+          "נסועה נמוכה חריגה לטובה (כ-10,000 ק\"מ בשנה)",
+          "מנוע 1.5 אמין ופשוט לטיפול",
+          "מחיר גמיש לאחר הורדה"
+        ],
+        "cons_and_warnings": [
+          "יד 5 גבוהה",
+          "שנתון 2010 ישן יחסית"
+        ],
+        "verdict_reason": "הקילומטראז' הנמוך והמכלולים העמידים של סוזוקי מפצים על היד הגבוהה והשנתון הישן, ומהווים בחירה סבירה לנהג מתחיל.",
+        "additional_info": {
+          "hand": 5,
+          "testUntil": "2027-08-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 8,
+          "description": null,
+          "originalPrice": 18900,
+          "token": "p5h068zw"
+        }
+      }
+    ],
+    "run_timestamp": "2026-10-16 11:58:59"
   }
 ]
