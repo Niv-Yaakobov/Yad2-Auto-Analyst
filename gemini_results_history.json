@@ -778,5 +778,258 @@
       }
     ],
     "run_timestamp": "2026-10-16 11:58:59"
+  },
+  {
+    "top_recommendations": [
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/76331fie",
+        "car_name": "2013 מאזדה 2 Dynamic אוט׳ האצ'בק 5 דל 1.5 (103 כ״ס)",
+        "price": 24800,
+        "km": 128000,
+        "score_out_of_10": 8.4,
+        "pros": [
+          "בעלות יד ראשונה (יד 1) נדירה לשנתון",
+          "קילומטראז' נמוך מאוד (כ-11.6 אלף ק\"מ בשנה)",
+          "מנוע 1.5 אטמוספרי וגיר פלנטרי אמינים ונמרצים"
+        ],
+        "cons_and_warnings": [
+          "מחיר קרוב לרף העליון בקטגוריה",
+          "נמכר על ידי סוחר - מחייב בדיקת היסטוריית טיפולים וטופס גילוי נאות"
+        ],
+        "verdict_reason": "נתונים יבשים מצוינים של יד ראשונה וקילומטראז' נמוך, בשילוב מכלולים יפניים אמינים מאוד.",
+        "additional_info": {
+          "hand": 1,
+          "testUntil": "2027-07-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "המומלץ ביותר !",
+          "month": 7,
+          "description": null,
+          "originalPrice": 24800,
+          "token": "76331fie"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/hlf12amc",
+        "car_name": "2013 סוזוקי סוויפט GLS אוט׳ 5 מק 5 דל 1.2 (94 כ״ס)",
+        "price": 21999,
+        "km": 117000,
+        "score_out_of_10": 8.3,
+        "pros": [
+          "קילומטראז' נמוך מאוד (כ-10 אלף ק\"מ בשנה)",
+          "אמינות יפנית גבוהה וצריכת דלק חסכונית",
+          "מכלולים פשוטים ועמידים לטווח ארוך"
+        ],
+        "cons_and_warnings": [
+          "תא מטען קטן יחסית",
+          "מכירה דרך סוחר רכב"
+        ],
+        "verdict_reason": "רכב סופר-מיני מבוקש ואמין במיוחד, בעל נסועה נמוכה מאוד ועלויות אחזקה נמוכות.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-06-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "May Car",
+          "month": 6,
+          "description": null,
+          "originalPrice": 23500,
+          "token": "hlf12amc"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/asmp73yx",
+        "car_name": "2013 סוזוקי סוויפט GLS ידני 5 מק 5 דל 1.2 (94 כ״ס)",
+        "price": 18000,
+        "km": 170000,
+        "score_out_of_10": 8.2,
+        "pros": [
+          "תיבת הילוכים ידנית - אמינות מקסימלית ואפס תקלות גיר יקרות",
+          "צריכת דלק מצוינת ועלויות אחזקה אפסיות",
+          "מוכר פרטי"
+        ],
+        "cons_and_warnings": [
+          "תיבת הילוכים ידנית (דורש רישיון מתאים ונכונות לנהוג בידני)",
+          "תא מטען קומפקטי"
+        ],
+        "verdict_reason": "בחירה מעולה לרכב ראשון למי שמעוניין בגיר ידני: פשוט, חסכוני, אמין במיוחד ונגיש במחיר.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-02-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 2,
+          "description": null,
+          "originalPrice": 18000,
+          "token": "asmp73yx"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/h0ce8fst",
+        "car_name": "2012 יונדאי i20 Instyle אוט׳ 1.4 (100 כ״ס)",
+        "price": 17500,
+        "km": 187000,
+        "score_out_of_10": 7.6,
+        "pros": [
+          "מוכר פרטי, יד שנייה בלבד (יד 2)",
+          "מנוע 1.4 אטמוספרי וגיר אוטומטי פלנטרי אמין ופשוט לתיקון",
+          "חלפים זולים וזמינים מאוד בשוק"
+        ],
+        "cons_and_warnings": [
+          "קילומטראז' מצטבר מעט גבוה (187,000 ק\"מ)",
+          "צריכת דלק ממוצעת בלבד בעיר"
+        ],
+        "verdict_reason": "רכב פרטי שמציע אמינות מוכחת, יד נמוכה לשנתון ועלויות טיפול נוחות.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-03-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 3,
+          "description": null,
+          "originalPrice": 19500,
+          "token": "h0ce8fst"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/e8zprwqs",
+        "car_name": "2010 יונדאי i20 GLI אוט׳ 1.4 (100 כ״ס)",
+        "price": 11900,
+        "km": 180000,
+        "score_out_of_10": 7.4,
+        "pros": [
+          "מחיר נמוך מאוד ונגיש לכל תקציב",
+          "יד 2 בלבד לשנתון 2010",
+          "מכלולים עמידים ואמינים"
+        ],
+        "cons_and_warnings": [
+          "שנתון ותיק (2010)",
+          "נמכר דרך סוחר רכב"
+        ],
+        "verdict_reason": "תמורה מעולה למחיר נמוך, רכב בסיסי ואמין המתאים לתקציב ראשוני מצומצם.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-01-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "רכב קשת",
+          "month": 1,
+          "description": null,
+          "originalPrice": 12900,
+          "token": "e8zprwqs"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/oczkl832",
+        "car_name": "2012 יונדאי i20 Insight אוט׳ 1.4 (100 כ״ס)",
+        "price": 19400,
+        "km": 139000,
+        "score_out_of_10": 7.3,
+        "pros": [
+          "קילומטראז' נמוך מהממוצע לשנתון (139,000 ק\"מ)",
+          "מנוע וגיר אמינים וזולים לתחזוקה"
+        ],
+        "cons_and_warnings": [
+          "יד 4 (בעלויות מרובות)",
+          "סוחר מסחרי"
+        ],
+        "verdict_reason": "נסועה נמוכה ומכלולים אמינים שמפצים על מספר הבעלים הקודמים.",
+        "additional_info": {
+          "hand": 4,
+          "testUntil": "2027-10-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "המומלץ ביותר !",
+          "month": 10,
+          "description": null,
+          "originalPrice": 19400,
+          "token": "oczkl832"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/yce8ctqo",
+        "car_name": "2010 יונדאי i20 Premium אוט׳ 1.4 (100 כ״ס)",
+        "price": 15500,
+        "km": 147000,
+        "score_out_of_10": 7.2,
+        "pros": [
+          "קילומטראז' נמוך לשנת 2010 (147,000 ק\"מ)",
+          "מכלול מנוע-גיר עמיד ופשוט"
+        ],
+        "cons_and_warnings": [
+          "שנתון ישן יחסית",
+          "סוחר מסחרי"
+        ],
+        "verdict_reason": "רכב תקציבי עמיד עם נסועה נמוכה ביחס לשנתון.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2026-10-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "רכבים יד שנייה",
+          "month": 10,
+          "description": null,
+          "originalPrice": 15500,
+          "token": "yce8ctqo"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/jb0qn4v0",
+        "car_name": "2011 יונדאי i20 Inspire אוט׳ 5 דל 1.4 (100 כ״ס)",
+        "price": 18500,
+        "km": 151000,
+        "score_out_of_10": 7.2,
+        "pros": [
+          "נסועה טובה לשנתון (151,000 ק\"מ)",
+          "אחזקה זולה וחלפים זמינים"
+        ],
+        "cons_and_warnings": [
+          "סוחר מסחרי",
+          "מחיר רגיל ללא יתרון מחיר בולט"
+        ],
+        "verdict_reason": "נתונים סבירים ומכלולים פשוטים המתאימים כרכב ראשון אמין.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-06-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "שרון קאר",
+          "month": 6,
+          "description": null,
+          "originalPrice": 18500,
+          "token": "jb0qn4v0"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/025vn9zb",
+        "car_name": "2012 יונדאי i20 Instyle אוט׳ 1.4 (100 כ״ס)",
+        "price": 16700,
+        "km": 187000,
+        "score_out_of_10": 7.1,
+        "pros": [
+          "מכלולים פשוטים ואמינים (מנוע אטמוספרי + גיר פלנטרי)",
+          "מחיר נוח לרכישה, מוכר פרטי"
+        ],
+        "cons_and_warnings": [
+          "יד 4 (כמות בעלים גבוהה)",
+          "קילומטראז' מצטבר חצי-גבוה"
+        ],
+        "verdict_reason": "מספק אמינות בסיסית טובה במחיר נגיש, אם כי היד גבוהה יחסית.",
+        "additional_info": {
+          "hand": 4,
+          "testUntil": "2027-03-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 3,
+          "description": null,
+          "originalPrice": 16700,
+          "token": "025vn9zb"
+        }
+      }
+    ],
+    "run_timestamp": "2026-10-18 12:11:03"
   }
 ]
