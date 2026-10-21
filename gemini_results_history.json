@@ -1031,5 +1031,264 @@
       }
     ],
     "run_timestamp": "2026-10-18 12:11:03"
+  },
+  {
+    "top_recommendations": [
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/ewsst319",
+        "car_name": "2010 מאזדה 2 Dynamic אוט׳ האצ'בק 5 דל 1.5 (103 כ״ס)",
+        "price": 19000,
+        "km": 147000,
+        "score_out_of_10": 8.3,
+        "pros": [
+          "יד ראשונה (מציאה נדירה לשנתון 2010)",
+          "נסועה נמוכה מאוד ביחס לגיל הרכב (כ-10.5 אלף ק\"מ בשנה)",
+          "מכלולים מכלול מנוע וגיר פלנטרי אמינים מאוד, פשוטים וזולים לתחזוקה",
+          "רמת גימור Dynamic המאובזרת והבטיחותית יותר"
+        ],
+        "cons_and_warnings": [
+          "נמכר על ידי סוחר/מגרש (חובה לוודא מקוריות יד 1 בברישיון הרכב)",
+          "עיצוב פנים בסיסי ובידוד רעשים בינוני"
+        ],
+        "verdict_reason": "רכב ראשון אידיאלי בזכות שילוב נדיר של יד ראשונה, קילומטראז' נמוך ומכלולים אמינים ועמידים לאורך זמן.",
+        "additional_info": {
+          "hand": 1,
+          "testUntil": "2027-08-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "IDAN MOTORS",
+          "month": 8,
+          "description": null,
+          "originalPrice": 19000,
+          "token": "ewsst319"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/hte7b70y",
+        "car_name": "2012 יונדאי i20 Inspire אוט׳ 5 דל 1.4 (100 כ״ס)",
+        "price": 19000,
+        "km": 103000,
+        "score_out_of_10": 7.7,
+        "pros": [
+          "קילומטראז' נמוך מאוד לשנת 2012 (כ-8.5 אלף ק\"מ בשנה בלבד)",
+          "מנוע 1.4 אטמוספרי וגיר אוטומטי פלנטרי פשוט ואמין",
+          "עלויות אחזקה וחלפים נמוכות מאוד"
+        ],
+        "cons_and_warnings": [
+          "מכירה דרך סוחר רכב - דורש בדיקה קפדנית לאימות הנסועה והיסטוריית תאונות",
+          "יד 4 קצת גבוהה"
+        ],
+        "verdict_reason": "הנסועה הנמוכה במיוחד הופכת את הרכב להזדמנות טובה לתחזוקה ארוכת טווח, בכפוף לבדיקת סוחר יסודית.",
+        "additional_info": {
+          "hand": 4,
+          "testUntil": "2027-08-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "גולד קארס",
+          "month": 8,
+          "description": null,
+          "originalPrice": 19000,
+          "token": "hte7b70y"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/krro2ya5",
+        "car_name": "2015 יונדאי i20 Inspire אוט׳ 1.4 (100 כ״ס)",
+        "price": 29800,
+        "km": 146000,
+        "score_out_of_10": 7.5,
+        "pros": [
+          "שנתון מתקדם יותר בדור החדש והמודרני של ה-i20",
+          "נסועה סבירה לגמרי לשנתון (כ-15 אלף ק\"מ בשנה)",
+          "מכלולים אמינים ומוכחים ללא מגדשי טורבו או גירים רובוטיים מורכבים"
+        ],
+        "cons_and_warnings": [
+          "מחיר גבוה יחסית לרכב ראשון בתקציב נמוך",
+          "נמכר על ידי מגרש סוחר"
+        ],
+        "verdict_reason": "דגם מודרני ובטיחותי יותר עם קילומטראז' הגיוני ומכלולים אמינים, מתאים למי שמוכן לשלם מעט יותר עבור שנתון מתקדם.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-05-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "המומלץ ביותר !",
+          "month": 5,
+          "description": null,
+          "originalPrice": 29800,
+          "token": "krro2ya5"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/zy8ssimm",
+        "car_name": "2011 מאזדה 2 Active אוט׳ סדאן 4 דל 1.5 (103 כ״ס)",
+        "price": 19000,
+        "km": 180000,
+        "score_out_of_10": 7.3,
+        "pros": [
+          "יד 2 בלבד לשנתון 2011",
+          "מנוע 1.5 וגיר אוטומטי פלנטרי אמינים ועמידים ביותר",
+          "תא מטען מוגדל (גרסת סדאן)"
+        ],
+        "cons_and_warnings": [
+          "מרכב סדאן פחות מבוקש ופחות נוח לחניה עירונית מגרסת ההאצ'בק",
+          "מכירה דרך סוחר"
+        ],
+        "verdict_reason": "רכב אמין מאוד עם מספר בעלים נמוך יחסית, המציע שימושיות נוספת הודות לתא המטען הגדול.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-05-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "רכב הצפון טריידיל בע\"מ",
+          "month": 5,
+          "description": null,
+          "originalPrice": 19000,
+          "token": "zy8ssimm"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/sixrlob9",
+        "car_name": "2011 יונדאי i20 Inspire אוט׳ 5 דל 1.4 (100 כ״ס)",
+        "price": 12000,
+        "km": 198000,
+        "score_out_of_10": 7.2,
+        "pros": [
+          "מחיר נמוך ונגיש מאוד (12,000 ש\"ח)",
+          "מוכר פרטי",
+          "טסט ארוך מאוד",
+          "מכלולים מכניים פשוטים ואמינים"
+        ],
+        "cons_and_warnings": [
+          "נסועה גבוהה (נושק ל-200,000 ק\"מ)",
+          "רכב בסיסי ישן הדורש בדיקת מערכת קירור ובלאי כללי"
+        ],
+        "verdict_reason": "פפתרון זול, אמין ופשוט מאוד לרכב ראשון בתקציב זעום ממוכר פרטי.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-08-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 8,
+          "description": null,
+          "originalPrice": 12000,
+          "token": "sixrlob9"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/x6eluzj0",
+        "car_name": "2016 יונדאי i20 Inspire אוט׳ 1.4 (100 כ״ס)",
+        "price": 24900,
+        "km": 198000,
+        "score_out_of_10": 7.2,
+        "pros": [
+          "שנתון 2016 חדיש עם הנדסת אנוש ובטיחות משופרות",
+          "יד 2 בלבד",
+          "מכלולים אמינים ופשוטים"
+        ],
+        "cons_and_warnings": [
+          "קילומטראז' גבוה לשנתון (כ-23.5 אלף ק\"מ בשנה)",
+          "מכירה דרך סוחר"
+        ],
+        "verdict_reason": "מציע שנתון מתקדם במחיר נוח בזכות הקילומטראז' הגבוה, אך המכלולים האמינים מחזיקים מעמד היטב.",
+        "additional_info": {
+          "hand": 2,
+          "testUntil": "2027-04-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "commercial",
+          "agencyName": "משה נונה רכבים",
+          "month": 4,
+          "description": null,
+          "originalPrice": 24900,
+          "token": "x6eluzj0"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/trnj6s14",
+        "car_name": "2015 יונדאי i20 Insight ידני 1.2 (85 כ״ס)",
+        "price": 22500,
+        "km": 160000,
+        "score_out_of_10": 7.1,
+        "pros": [
+          "תיבת הילוכים ידנית - אמינות מקסימלית, חיסכון מעולה בדלק ועלויות אחזקה אפסיות",
+          "מוכר פרטי",
+          "שנתון 2015 מתקדם"
+        ],
+        "cons_and_warnings": [
+          "יד 5 גבוהה מאוד לשנתון 2015",
+          "גיר ידני (לא מתאים לכל נהג)"
+        ],
+        "verdict_reason": "בחירה מצוינת למי שמחפש חיסכון בדלק ואמינות מכנית גבוהה ומוכן לנהוג על גיר ידני.",
+        "additional_info": {
+          "hand": 5,
+          "testUntil": "2026-11-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 11,
+          "description": null,
+          "originalPrice": 22500,
+          "token": "trnj6s14"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/yo97nupe",
+        "car_name": "2012 יונדאי i20 Inspire אוט׳ 1.4 (100 כ״ס)",
+        "price": 17000,
+        "km": 187000,
+        "score_out_of_10": 7.1,
+        "pros": [
+          "מוכר פרטי",
+          "מכלולים פשוטים ועמידים",
+          "טסט ארוך"
+        ],
+        "cons_and_warnings": [
+          "קילומטראז' ויד ממוצעים ומעלה לשנתון",
+          "מחיר מעט גבוה ביחס לנסועה"
+        ],
+        "verdict_reason": "סוס עבודה אמין ומוכר ממוכר פרטי שעומד בדרישות הבסיס לרכב ראשון.",
+        "additional_info": {
+          "hand": 3,
+          "testUntil": "2027-08-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 8,
+          "description": null,
+          "originalPrice": 17000,
+          "token": "yo97nupe"
+        }
+      },
+      {
+        "link": "https://www.yad2.co.il/vehicles/item/lsqw0rel",
+        "car_name": "2012 יונדאי i20 Instyle אוט׳ 1.4 (100 כ״ס)",
+        "price": 12000,
+        "km": 188000,
+        "score_out_of_10": 7.0,
+        "pros": [
+          "מחיר נמוך במיוחד (12,000 ש\"ח)",
+          "מוכר פרטי",
+          "מכלולים אמינים וזולים לתחזוקה"
+        ],
+        "cons_and_warnings": [
+          "יד 5 גבוהה",
+          "קילומטראז' לא נמוך (188,000 ק\"מ)"
+        ],
+        "verdict_reason": "אופציה זולה מאוד לתחבורה בסיסית ואמינה, מתאימה לבעלי תקציב מוגבל שרוצים להימנע מרכבים אירופאים מסובכים.",
+        "additional_info": {
+          "hand": 5,
+          "testUntil": "2027-03-01T00:00:00",
+          "previousOwnership": null,
+          "sellerType": "private",
+          "agencyName": null,
+          "month": 3,
+          "description": null,
+          "originalPrice": 12000,
+          "token": "lsqw0rel"
+        }
+      }
+    ],
+    "run_timestamp": "2026-10-21 11:54:18"
   }
 ]
