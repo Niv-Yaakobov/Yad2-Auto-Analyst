@@ -26,13 +26,22 @@ if not api_key:
 
 client = genai.Client(api_key=api_key)
 
+# כותרות (Headers) מורחבות שמודיעות לשרת שהגענו מדף החיפוש הראשי של יד 2
 HEADERS = {
-    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "accept-language": "en-US,en;q=0.9,he;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+    "accept-language": "he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7",
+    "referer": "https://www.yad2.co.il/vehicles/cars", 
+    "sec-ch-ua": '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": '"Windows"',
+    "sec-fetch-dest": "document",
+    "sec-fetch-mode": "navigate",
+    "sec-fetch-site": "same-origin",
+    "upgrade-insecure-requests": "1",
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 }
 
-# יצירת חיבור קבוע (Session) שישמור עוגיות ויחסוך חסימות
+# יצירת חיבור קבוע (Session) שישמור עוגיות אבטחה ויחסוך חסימות
 session = requests.Session(impersonate="chrome120")
 session.headers.update(HEADERS)
 
@@ -221,6 +230,15 @@ if __name__ == "__main__":
         print("[מערכת]: קובץ ההיסטוריה פגום.")
         exit()
 
+    # --- תוספת קריטית נגד חסימות Radware: חימום הסשן ---
+    print("[מערכת]: מחמם חיבור ומושך עוגיות אבטחה (Radware Clearance)...")
+    try:
+        session.get("https://www.yad2.co.il/vehicles/cars", allow_redirects=True)
+        time.sleep(random.uniform(2.0, 4.0))
+    except Exception as e:
+        print(f"[שגיאה]: תקלה בחימום החיבור: {e}")
+    # ----------------------------------------------------
+
     print("[מערכת]: מתחיל סריקת מעקב מחירים על רכבים שנשמרו בעבר...")
     cars_updated_count = 0
     total_cars_checked = 0
@@ -245,7 +263,7 @@ if __name__ == "__main__":
 
                 total_cars_checked += 1
                 
-                # המתנה אקראית בין 4.5 ל-9.0 שניות למניעת זיהוי דפוס רובוטי על ידי חומות אש
+                # המתנה אקראית למניעת זיהוי דפוס רובוטי על ידי חומות אש
                 delay = random.uniform(4.5, 9.0)
                 time.sleep(delay)
                 
