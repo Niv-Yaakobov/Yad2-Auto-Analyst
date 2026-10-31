@@ -42,19 +42,31 @@ def fetch_current_price(token):
     """
     url = f"https://www.yad2.co.il/vehicles/item/{token}"
     try:
-        res = requests.get(url, headers=HEADERS, impersonate="chrome120", allow_redirects=False)
+        res = requests.get(url, headers=HEADERS, impersonate="chrome120", allow_redirects=True)
         
-        if res.status_code in (404, 410, 301, 302):
+        # אם יש הפניה לעמוד הבית או סטטוס של עמוד לא קיים
+        if res.status_code in (404, 410):
             return "REMOVED"
             
         if res.status_code != 200:
             return None 
-            
+
+        # בדיקת הטקסטים המדויקים לפי עמוד השגיאה של יד 2
+        removed_phrases = [
+            "אין לנו עמוד כזה",
+            "שהעמוד שחיפשת הוסר",
+            "העמוד שחיפשת הוסר",
+            "חזרה לדף הבית",
+            "לא נמצא",
+            "לא קיימת"
+        ]
+        if any(phrase in res.text for phrase in removed_phrases):
+            return "REMOVED"
+
         match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', res.text)
         if not match:
-            if "לא נמצא" in res.text or "לא קיימת" in res.text:
-                return "REMOVED"
-            return None
+            # אם אין נתוני Next.js בעמוד 200, המודעה כנראה אינה פעילה
+            return "REMOVED"
 
         raw_json = json.loads(match.group(1))
         queries = raw_json.get("props", {}).get("pageProps", {}).get("dehydratedState", {}).get("queries", [])
@@ -64,13 +76,15 @@ def fetch_current_price(token):
 
         for query in queries:
             state_data = query.get("state", {}).get("data", {})
-            if isinstance(state_data, dict) and "price" in state_data:
-                return state_data.get("price")
+            if isinstance(state_data, dict):
+                # אם שדה המחיר קיים ובעל ערך
+                if "price" in state_data and state_data["price"]:
+                    return state_data.get("price")
                 
         return "REMOVED"
     except Exception:
         return None
-
+        
 def analyze_price_drop_with_gemini(car_data, old_price, new_price, old_score, max_retries=3):
     """שולח את נתוני ירידת המחיר להערכה מחדש ב-Gemini"""
     prompt = f"""
