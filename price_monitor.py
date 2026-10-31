@@ -35,45 +35,58 @@ HEADERS = {
 def fetch_current_price(token):
     """
     שולף את המחיר העדכני מדף המודעה.
-    מוחק רכב אך ורק בגין ודאות מוחלטת של הסרת מודעה (False Positive Protection).
+    מוחק רכב אך ורק לפי אינדיקציות מבניות (Structural Checks) בליבת ה-Next.js של האתר.
     """
     url = f"https://www.yad2.co.il/vehicles/item/{token}"
     try:
-        # כאן אנחנו מאפשרים Redirects, כדי שאם יד 2 מעבירים אותנו לדף ה"אין עמוד כזה", נראה את הטקסט
-        res = requests.get(url, headers=HEADERS, impersonate="chrome120", allow_redirects=True)
+        res = requests.get(url, headers=HEADERS, impersonate="chrome120")
         
-        # 1. הגנה 1: חיפוש מחרוזות מחיקה מובהקות (לפי התמונה שסיפקת)
-        if "אין לנו עמוד כזה" in res.text or "העמוד שחיפשת הוסר" in res.text:
-            return "REMOVED"
-            
-        # 2. הגנה 2: זיהוי הסרה לפי קוד סטטוס HTTP רשמי
+        # הגנה בסיסית: סטטוס 404/410 רשמי של השרת
         if res.status_code in (404, 410):
             return "REMOVED"
             
-        # אם הסטטוס הוא לא 200 וגם לא שגיאת מחיקה מובהקת (למשל 403 חסימת בוט, או 500 בעיית שרת) - אל תמחק!
         if res.status_code != 200:
             return None 
             
-        # 3. ניסיון שליפת המחיר
+        # שליפת קובץ הנתונים המבני של האתר
         match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', res.text)
         if not match:
-            # אם אין את קובץ הנתונים, זה כנראה חסימת קאפצ'ה או שינוי באתר. בשום אופן לא למחוק!
             return None
 
         raw_json = json.loads(match.group(1))
+        
+        # --- בדיקות מבניות (Structural Checks) ---
+        
+        page_route = raw_json.get("page")
+        is_404 = raw_json.get("is404")
+        status_code = raw_json.get("pageProps", {}).get("statusCode")
+        
+        # 1. בדיקת ניתוב פנימי של האפליקציה
+        # אם ה-JSON מצהיר שהדף הזה הוא דף שגיאה או 404, המודעה בוודאות נמחקה
+        if page_route in ["/404", "/_error"] or is_404 is True or status_code == 404:
+            return "REMOVED"
+
+        # 2. ניסיון שליפת המחיר מתוך המבנה התקין
         queries = raw_json.get("props", {}).get("pageProps", {}).get("dehydratedState", {}).get("queries", [])
         
+        # אם העמוד הוגדר כעמוד רכב תקין ("/vehicles/item/[token]"), אבל המבנה של 'queries' ריק לגמרי
+        # זה אומר שה-API הפנימי שלהם החזיר שגיאה והמודעה ריקה מתוכן.
+        if page_route == "/vehicles/item/[token]" and not queries:
+             # נוסיף את הבדיקה החזותית רק כחיזוק למבנה הריק
+             if "אין לנו עמוד כזה" in res.text:
+                 return "REMOVED"
+
+        # 3. אם הכל תקין, נחלץ את המחיר
         for query in queries:
             state_data = query.get("state", {}).get("data", {})
             if isinstance(state_data, dict) and "price" in state_data:
                 return state_data.get("price")
                 
-        # 4. הגנה אחרונה: אם הגענו לפה, הדף תקין אבל מפתח ה-"price" פשוט לא נמצא (אולי יד 2 שינו את השם שלו). 
-        # מחזירים None כדי לשמור על הרכב במאגר.
+        # אם הגענו לכאן - העמוד קיים ותקין מבנית, אבל לא מצאנו את שדה המחיר (אולי שינו שם משתנה). נגן על הרכב!
         return None
         
-    except Exception:
-        # במקרה של ניתוק אינטרנט או שגיאת קוד - מגינים על המאגר ולא מוחקים כלום
+    except Exception as e:
+        print(f"[{token}] Error fetching price: {e}")
         return None
         
 def analyze_price_drop_with_gemini(car_data, old_price, new_price, old_score, max_retries=3):
