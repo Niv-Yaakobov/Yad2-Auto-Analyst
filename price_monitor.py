@@ -3,6 +3,7 @@ import re
 import time
 import os
 import smtplib
+import random
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pathlib import Path
@@ -28,20 +29,22 @@ client = genai.Client(api_key=api_key)
 HEADERS = {
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "accept-language": "en-US,en;q=0.9,he;q=0.8",
-    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.5 Safari/605.1.15",
-    "cookie": "guest_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9;" 
+    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
 }
 
-def fetch_current_price(token):
+# יצירת חיבור קבוע (Session) שישמור עוגיות ויחסוך חסימות
+session = requests.Session(impersonate="chrome120")
+session.headers.update(HEADERS)
+
+def fetch_current_price(token, current_session):
     """
     שולף את המחיר העדכני מדף המודעה.
     מוחק רכב אך ורק לפי אינדיקציות מבניות בליבת ה-Next.js של האתר.
-    כולל זיהוי חסימות (Radware) כדי למנוע מחיקת רכבים שגויה.
+    כולל זיהוי חסימות (Radware) ושימוש בסשן פתוח.
     """
     url = f"https://www.yad2.co.il/vehicles/item/{token}"
     try:
-        # שימוש בחתימת Safari כדי לנסות לעקוף חסימות Radware שמזהות Chrome ספציפי
-        res = requests.get(url, headers=HEADERS, impersonate="safari15_5", allow_redirects=True)
+        res = current_session.get(url, allow_redirects=True)
         
         # זיהוי חסימת בוטים (Radware WAF)
         if "Radware Page" in res.text or "Verifying your browser" in res.text:
@@ -85,7 +88,6 @@ def fetch_current_price(token):
             if isinstance(state_data, dict) and "price" in state_data:
                 return state_data.get("price")
                 
-        # אם העמוד קיים ותקין מבנית אך שדה המחיר חסר - הגנה מפני מחיקה
         return None
         
     except Exception as e:
@@ -243,10 +245,12 @@ if __name__ == "__main__":
 
                 total_cars_checked += 1
                 
-                # הוספת השהייה ארוכה יותר למניעת חסימות שרתי ענן (GitHub Actions)
-                time.sleep(3) 
+                # המתנה אקראית בין 4.5 ל-9.0 שניות למניעת זיהוי דפוס רובוטי על ידי חומות אש
+                delay = random.uniform(4.5, 9.0)
+                time.sleep(delay)
                 
-                current_price = fetch_current_price(token)
+                # העברת ה-session הקבוע אל הפונקציה
+                current_price = fetch_current_price(token, session)
                 
                 if current_price == "REMOVED":
                     print(f"[{token}] 🗑️ המודעה הוסרה מיד 2! מוחק מהמאגר...")
