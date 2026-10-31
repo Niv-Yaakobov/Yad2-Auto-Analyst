@@ -34,55 +34,46 @@ HEADERS = {
 
 def fetch_current_price(token):
     """
-    שולף את המחיר העדכני.
-    מחזיר: 
-    - מספר (המחיר) אם הצליח.
-    - "REMOVED" אם המודעה הוסרה בוודאות.
-    - None אם יש שגיאת רשת/חסימה.
+    שולף את המחיר העדכני מדף המודעה.
+    מוחק רכב אך ורק בגין ודאות מוחלטת של הסרת מודעה (False Positive Protection).
     """
     url = f"https://www.yad2.co.il/vehicles/item/{token}"
     try:
+        # כאן אנחנו מאפשרים Redirects, כדי שאם יד 2 מעבירים אותנו לדף ה"אין עמוד כזה", נראה את הטקסט
         res = requests.get(url, headers=HEADERS, impersonate="chrome120", allow_redirects=True)
         
-        # אם יש הפניה לעמוד הבית או סטטוס של עמוד לא קיים
+        # 1. הגנה 1: חיפוש מחרוזות מחיקה מובהקות (לפי התמונה שסיפקת)
+        if "אין לנו עמוד כזה" in res.text or "העמוד שחיפשת הוסר" in res.text:
+            return "REMOVED"
+            
+        # 2. הגנה 2: זיהוי הסרה לפי קוד סטטוס HTTP רשמי
         if res.status_code in (404, 410):
             return "REMOVED"
             
+        # אם הסטטוס הוא לא 200 וגם לא שגיאת מחיקה מובהקת (למשל 403 חסימת בוט, או 500 בעיית שרת) - אל תמחק!
         if res.status_code != 200:
             return None 
-
-        # בדיקת הטקסטים המדויקים לפי עמוד השגיאה של יד 2
-        removed_phrases = [
-            "אין לנו עמוד כזה",
-            "שהעמוד שחיפשת הוסר",
-            "העמוד שחיפשת הוסר",
-            "חזרה לדף הבית",
-            "לא נמצא",
-            "לא קיימת"
-        ]
-        if any(phrase in res.text for phrase in removed_phrases):
-            return "REMOVED"
-
+            
+        # 3. ניסיון שליפת המחיר
         match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', res.text)
         if not match:
-            # אם אין נתוני Next.js בעמוד 200, המודעה כנראה אינה פעילה
-            return "REMOVED"
+            # אם אין את קובץ הנתונים, זה כנראה חסימת קאפצ'ה או שינוי באתר. בשום אופן לא למחוק!
+            return None
 
         raw_json = json.loads(match.group(1))
         queries = raw_json.get("props", {}).get("pageProps", {}).get("dehydratedState", {}).get("queries", [])
         
-        if not queries:
-            return "REMOVED" 
-
         for query in queries:
             state_data = query.get("state", {}).get("data", {})
-            if isinstance(state_data, dict):
-                # אם שדה המחיר קיים ובעל ערך
-                if "price" in state_data and state_data["price"]:
-                    return state_data.get("price")
+            if isinstance(state_data, dict) and "price" in state_data:
+                return state_data.get("price")
                 
-        return "REMOVED"
+        # 4. הגנה אחרונה: אם הגענו לפה, הדף תקין אבל מפתח ה-"price" פשוט לא נמצא (אולי יד 2 שינו את השם שלו). 
+        # מחזירים None כדי לשמור על הרכב במאגר.
+        return None
+        
     except Exception:
+        # במקרה של ניתוק אינטרנט או שגיאת קוד - מגינים על המאגר ולא מוחקים כלום
         return None
         
 def analyze_price_drop_with_gemini(car_data, old_price, new_price, old_score, max_retries=3):
