@@ -28,18 +28,25 @@ client = genai.Client(api_key=api_key)
 HEADERS = {
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "accept-language": "en-US,en;q=0.9,he;q=0.8",
-    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+    "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.5 Safari/605.1.15",
     "cookie": "guest_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9;" 
 }
 
 def fetch_current_price(token):
     """
     שולף את המחיר העדכני מדף המודעה.
-    מוחק רכב אך ורק לפי אינדיקציות מבניות (Structural Checks) בליבת ה-Next.js של האתר.
+    מוחק רכב אך ורק לפי אינדיקציות מבניות בליבת ה-Next.js של האתר.
+    כולל זיהוי חסימות (Radware) כדי למנוע מחיקת רכבים שגויה.
     """
     url = f"https://www.yad2.co.il/vehicles/item/{token}"
     try:
-        res = requests.get(url, headers=HEADERS, impersonate="chrome120")
+        # שימוש בחתימת Safari כדי לנסות לעקוף חסימות Radware שמזהות Chrome ספציפי
+        res = requests.get(url, headers=HEADERS, impersonate="safari15_5", allow_redirects=True)
+        
+        # זיהוי חסימת בוטים (Radware WAF)
+        if "Radware Page" in res.text or "Verifying your browser" in res.text:
+            print(f"[{token}] 🛡️ נחסם על ידי מערכת הגנת הבוטים (Radware). מדלג על הרכב הזה...")
+            return None
         
         # הגנה בסיסית: סטטוס 404/410 רשמי של השרת
         if res.status_code in (404, 410):
@@ -55,40 +62,36 @@ def fetch_current_price(token):
 
         raw_json = json.loads(match.group(1))
         
-        # --- בדיקות מבניות (Structural Checks) ---
-        
+        # בדיקות מבניות (Structural Checks)
         page_route = raw_json.get("page")
         is_404 = raw_json.get("is404")
         status_code = raw_json.get("pageProps", {}).get("statusCode")
         
         # 1. בדיקת ניתוב פנימי של האפליקציה
-        # אם ה-JSON מצהיר שהדף הזה הוא דף שגיאה או 404, המודעה בוודאות נמחקה
         if page_route in ["/404", "/_error"] or is_404 is True or status_code == 404:
             return "REMOVED"
 
         # 2. ניסיון שליפת המחיר מתוך המבנה התקין
         queries = raw_json.get("props", {}).get("pageProps", {}).get("dehydratedState", {}).get("queries", [])
         
-        # אם העמוד הוגדר כעמוד רכב תקין ("/vehicles/item/[token]"), אבל המבנה של 'queries' ריק לגמרי
-        # זה אומר שה-API הפנימי שלהם החזיר שגיאה והמודעה ריקה מתוכן.
+        # 3. הגנת מבנה ריק לצד טקסט חזותי
         if page_route == "/vehicles/item/[token]" and not queries:
-             # נוסיף את הבדיקה החזותית רק כחיזוק למבנה הריק
-             if "אין לנו עמוד כזה" in res.text:
+             if "אין לנו עמוד כזה" in res.text or "העמוד שחיפשת הוסר" in res.text:
                  return "REMOVED"
 
-        # 3. אם הכל תקין, נחלץ את המחיר
+        # 4. אם הכל תקין, נחלץ את המחיר
         for query in queries:
             state_data = query.get("state", {}).get("data", {})
             if isinstance(state_data, dict) and "price" in state_data:
                 return state_data.get("price")
                 
-        # אם הגענו לכאן - העמוד קיים ותקין מבנית, אבל לא מצאנו את שדה המחיר (אולי שינו שם משתנה). נגן על הרכב!
+        # אם העמוד קיים ותקין מבנית אך שדה המחיר חסר - הגנה מפני מחיקה
         return None
         
     except Exception as e:
         print(f"[{token}] Error fetching price: {e}")
         return None
-        
+
 def analyze_price_drop_with_gemini(car_data, old_price, new_price, old_score, max_retries=3):
     """שולח את נתוני ירידת המחיר להערכה מחדש ב-Gemini"""
     prompt = f"""
@@ -220,7 +223,7 @@ if __name__ == "__main__":
     cars_updated_count = 0
     total_cars_checked = 0
     tokens_to_remove = []
-    cars_with_price_drops = [] # רשימה לאיסוף הרכבים שהוזלו לטובת המייל
+    cars_with_price_drops = [] 
 
     for run in history_data:
         if "top_recommendations" in run:
@@ -239,7 +242,9 @@ if __name__ == "__main__":
                     continue
 
                 total_cars_checked += 1
-                time.sleep(1) 
+                
+                # הוספת השהייה ארוכה יותר למניעת חסימות שרתי ענן (GitHub Actions)
+                time.sleep(3) 
                 
                 current_price = fetch_current_price(token)
                 
@@ -269,23 +274,22 @@ if __name__ == "__main__":
                             }
                             
                             cars_updated_count += 1
-                            cars_with_price_drops.append(car) # הוספת הרכב לרשימת המייל
+                            cars_with_price_drops.append(car)
                             print(f"   [V] הרכב עודכן בהצלחה. ציון חדש: {car['score_out_of_10']}")
                 
                 cars_to_keep.append(car)
             
             run["top_recommendations"] = cars_to_keep
 
-    if cars_updated_count > 0:
+    if cars_updated_count > 0 or tokens_to_remove:
         with open(RESULTS_FILE, "w", encoding="utf-8") as f:
             json.dump(history_data, f, ensure_ascii=False, indent=2)
         print(f"\n[מערכת]: סריקה הסתיימה. הקובץ עודכן (נמחקו/עודכנו סה\"כ {cars_updated_count} רכבים).")
     else:
         with open(RESULTS_FILE, "w", encoding="utf-8") as f:
             json.dump(history_data, f, ensure_ascii=False, indent=2)
-        print(f"\n[מערכת]: סריקה הסתיימה. נבדקו {total_cars_checked} רכבים, לא נמצאו שינויים.")
+        print(f"\n[מערכת]: סריקה הסתיימה. נבדקו {total_cars_checked} רכבים, לא נמצאו שינויים/ירידות מחיר.")
 
-    # שליחת המייל אם נמצאו ירידות מחיר
     if cars_with_price_drops:
         send_price_drop_email(cars_with_price_drops)
 
@@ -298,6 +302,6 @@ if __name__ == "__main__":
                 pt_data_cleaned = [t for t in pt_data if t not in tokens_to_remove]
                 with open(PROCESSED_TOKENS_FILE, "w", encoding="utf-8") as f:
                     json.dump(pt_data_cleaned, f, ensure_ascii=False, indent=2)
-                print(f"[מערכת]: {len(tokens_to_remove)} טוקנים הוסרו בהצלחה מקובץ הזיכרון.")
+                print(f"[מערכת]: {len(tokens_to_remove)} טוקנים הוסרו בהצלחה מקובץ הזיכרון (processed_tokens.json).")
         except Exception as e:
             print(f"[שגיאה]: תקלה בעדכון קובץ הזיכרון: {e}")
